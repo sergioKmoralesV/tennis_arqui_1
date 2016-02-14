@@ -34,6 +34,7 @@ public class TennisGame2 implements TennisGame
     }
     
     public void reviewForAdvantageScore(){
+
         if (P1point > P2point && P2point >= 3)
         {
             score = "Advantage player1";
@@ -44,8 +45,9 @@ public class TennisGame2 implements TennisGame
             score = "Advantage player2";
         }
     }
-    public String getScore(){
-        if (P1point == P2point && P1point < 4)
+    
+    public void reviewScoreBoard(){
+    	if (P1point == P2point && P1point < 4)
         {
             P1res = scoreEquivalency[P1point];
         }
@@ -67,32 +69,26 @@ public class TennisGame2 implements TennisGame
                 P2res = scoreEquivalency[P2point];
             if (P2point==3)
                 P2res = scoreEquivalency[P2point];
-            P1res = scoreEquivalency[P1point];;
+            P1res = scoreEquivalency[P1point];
         }
         
         if (P1point>P2point && P1point < 4)
         {
-            if (P1point==2)
+            if (P1point>=2)
                 P1res=scoreEquivalency[P1point];
-            if (P1point==3)
-                P1res=scoreEquivalency[P1point];
-            if (P2point==1)
-                P2res=scoreEquivalency[P2point];
-            if (P2point==2)
+            if (P2point>=1)
                 P2res=scoreEquivalency[P2point];
         }
         if (P2point>P1point && P2point < 4)
         {
-            if (P2point==2)
+            if (P2point>=2)
                 P2res=scoreEquivalency[P2point];
-            if (P2point==3)
-                P2res=scoreEquivalency[P2point];
-            if (P1point==1)
-                P1res=scoreEquivalency[P1point];
-            if (P1point==2)
+            if (P1point>=1)
                 P1res=scoreEquivalency[P1point];
         }
-        
+    }
+    public String getScore(){
+        reviewScoreBoard();
         score = P1res + "-" + P2res;
         reviewForDeuce();
         reviewForAdvantageScore();
