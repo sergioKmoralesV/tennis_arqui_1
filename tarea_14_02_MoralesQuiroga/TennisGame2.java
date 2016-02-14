@@ -5,8 +5,8 @@ public class TennisGame2 implements TennisGame
     public int P1point = 0;
     public int P2point = 0;
     
-    public String P1res = "All";
-    public String P2res = "All";
+    public String P1res = "";
+    public String P2res = "";
     private String player1Name;
     private String player2Name;
     private String[] scoreEquivalency = {"Love","Fifteen","Thirty","Forty"};
@@ -53,13 +53,18 @@ public class TennisGame2 implements TennisGame
             P2res = "All";
         }
     }
-    public void reviewScoreBoard(){
-    	reviewForTie();
-        if (P1point!=P2point && (P1point < 4 && P2point <4))
+    
+    public void getScoreAvoidingSpecialCases(){
+    	if (P1point!=P2point && (P1point < 4 && P2point <4))
         {
                 P1res=scoreEquivalency[P1point];
                 P2res=scoreEquivalency[P2point];
         }
+    }
+    
+    public void reviewScoreBoard(){
+    	reviewForTie();
+        getScoreAvoidingSpecialCases();
         score = P1res + "-" + P2res;
         reviewForDeuce();
         reviewForAdvantageScore();
