@@ -72,19 +72,10 @@ public class TennisGame2 implements TennisGame
             P1res = scoreEquivalency[P1point];
         }
         
-        if (P1point>P2point && P1point < 4)
+        if (P1point!=P2point && (P1point < 4 && P2point <4))
         {
-            if (P1point>=2)
                 P1res=scoreEquivalency[P1point];
-            if (P2point>=1)
                 P2res=scoreEquivalency[P2point];
-        }
-        if (P2point>P1point && P2point < 4)
-        {
-            if (P2point>=2)
-                P2res=scoreEquivalency[P2point];
-            if (P1point>=1)
-                P1res=scoreEquivalency[P1point];
         }
     }
     public String getScore(){
