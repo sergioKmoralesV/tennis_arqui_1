@@ -46,44 +46,27 @@ public class TennisGame2 implements TennisGame
         }
     }
     
-    public void reviewScoreBoard(){
+    public void reviewForTie(){
     	if (P1point == P2point && P1point < 4)
         {
             P1res = scoreEquivalency[P1point];
+            P2res = "All";
         }
-        if (P1point > 0 && P2point==0)
-        {
-            if (P1point==1)
-                P1res = scoreEquivalency[P1point];
-            if (P1point==2)
-                P1res = scoreEquivalency[P1point];
-            if (P1point==3)
-                P1res = scoreEquivalency[P1point];
-            P2res = scoreEquivalency[P2point];
-        }
-        if (P2point > 0 && P1point==0)
-        {
-            if (P2point==1)
-                P2res = scoreEquivalency[P2point];
-            if (P2point==2)
-                P2res = scoreEquivalency[P2point];
-            if (P2point==3)
-                P2res = scoreEquivalency[P2point];
-            P1res = scoreEquivalency[P1point];
-        }
-        
+    }
+    public void reviewScoreBoard(){
+    	reviewForTie();
         if (P1point!=P2point && (P1point < 4 && P2point <4))
         {
                 P1res=scoreEquivalency[P1point];
                 P2res=scoreEquivalency[P2point];
         }
-    }
-    public String getScore(){
-        reviewScoreBoard();
         score = P1res + "-" + P2res;
         reviewForDeuce();
         reviewForAdvantageScore();
         reviewForWinner();
+    }
+    public String getScore(){
+        reviewScoreBoard();
         return score;
     }
     
