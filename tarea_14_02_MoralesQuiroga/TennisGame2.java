@@ -5,8 +5,8 @@ public class TennisGame2 implements TennisGame
     public int P1point = 0;
     public int P2point = 0;
     
-    public String P1res = "";
-    public String P2res = "";
+    public String P1res = "All";
+    public String P2res = "All";
     private String player1Name;
     private String player2Name;
     private String[] scoreEquivalency = {"Love","Fifteen","Thirty","Forty"};
@@ -24,15 +24,8 @@ public class TennisGame2 implements TennisGame
     public String getScore(){
         if (P1point == P2point && P1point < 4)
         {
-            if (P1point==0)
-                score = scoreEquivalency[P1point];
-            if (P1point==1)
-                score = scoreEquivalency[P1point];
-            if (P1point==2)
-                score = scoreEquivalency[P1point];
-            score += "-All";
+            P1res = scoreEquivalency[P1point];
         }
-        isDeuce();
         if (P1point > 0 && P2point==0)
         {
             if (P1point==1)
@@ -42,8 +35,7 @@ public class TennisGame2 implements TennisGame
             if (P1point==3)
                 P1res = scoreEquivalency[P1point];
             
-            P2res = "Love";
-            score = P1res + "-" + P2res;
+            P2res = scoreEquivalency[P2point];;
         }
         if (P2point > 0 && P1point==0)
         {
@@ -53,9 +45,7 @@ public class TennisGame2 implements TennisGame
                 P2res = scoreEquivalency[P2point];
             if (P2point==3)
                 P2res = scoreEquivalency[P2point];
-            
-            P1res = "Love";
-            score = P1res + "-" + P2res;
+            P1res = scoreEquivalency[P1point];;
         }
         
         if (P1point>P2point && P1point < 4)
@@ -68,7 +58,6 @@ public class TennisGame2 implements TennisGame
                 P2res=scoreEquivalency[P2point];
             if (P2point==2)
                 P2res=scoreEquivalency[P2point];
-            score = P1res + "-" + P2res;
         }
         if (P2point>P1point && P2point < 4)
         {
@@ -80,9 +69,10 @@ public class TennisGame2 implements TennisGame
                 P1res=scoreEquivalency[P1point];
             if (P1point==2)
                 P1res=scoreEquivalency[P1point];
-            score = P1res + "-" + P2res;
         }
-        
+        score = P1res + "-" + P2res;
+        isDeuce();
+
         if (P1point > P2point && P2point >= 3)
         {
             score = "Advantage player1";
